@@ -26,7 +26,7 @@ registrations as registrations,
 0 as revenue,
 0 as shares,
 spend as spend,
-skan_conversion as total_conversions,
+conversions as total_conversions,
 video_views as video_views from  {{ ref('src_ads_tiktok_ads_all_data')}}
 
 union all
@@ -70,11 +70,11 @@ clicks as clicks,
 comments as comments,
 creative_id as creative_id,
 __insert_date as date,
-0 as engagements,
+views as engagements,
 impressions as impressions,
 mobile_app_install as installs,
 likes as likes,
-clicks as link_clicks,
+inline_link_clicks as link_clicks,
 0 as placement_id,
 0 as post_click_conversions,
 0 as post_view_conversions,
@@ -84,7 +84,7 @@ complete_registration as registrations,
 0 as revenue,
 shares as shares,
 spend as spend,
-0 as total_conversions,
+purchase as total_conversions,
 views as video_views from {{ ref('src_ads_creative_facebook_all_data')}}
 
 union all
