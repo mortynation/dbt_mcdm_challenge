@@ -1,0 +1,118 @@
+{{ config (
+    materialized="table"
+)}}
+
+select 
+ad_id as ad_id,
+add_to_cart as add_to_cart,
+adgroup_id as adset_id,
+campaign_id as campaign_id,
+channel as channel,
+clicks as clicks,
+0 as comments,
+0 as creative_id,
+__insert_date as date,
+0 as engagements,
+impressions as impressions,
+rt_installs as installs,
+0 as likes,
+clicks as link_clicks,
+0 as placement_id,
+0 as post_click_conversions,
+0 as post_view_conversions,
+0 as posts,
+purchase as purchase,
+registrations as registrations,
+0 as revenue,
+0 as shares,
+spend as spend,
+skan_conversion as total_conversions,
+video_views as video_views from  {{ ref('src_ads_tiktok_ads_all_data')}}
+
+union all
+
+select
+0 as ad_id,
+0 as add_to_cart,
+0 as adset_id,
+campaign_id as campaign_id,
+channel as channel,
+clicks as clicks,
+comments as comments,
+0 as creative_id,
+__insert_date as date,
+engagements as engagements,
+impressions as impressions,
+0 as installs,
+likes as likes,
+url_clicks as link_clicks,
+0 as placement_id,
+0 as post_click_conversions,
+0 as post_view_conversions,
+0 as posts,
+0 as purchase,
+0 as registrations,
+0 as revenue,
+retweets as shares,
+spend as spend,
+0 as total_conversions,
+video_total_views as video_views from {{ ref('src_promoted_tweets_twitter_all_data')}}
+
+union all
+
+select
+ad_id as ad_id,
+add_to_cart as add_to_cart,
+adset_id as adset_id,
+campaign_id as campaign_id,
+channel as channel,
+clicks as clicks,
+comments as comments,
+creative_id as creative_id,
+__insert_date as date,
+0 as engagements,
+impressions as impressions,
+mobile_app_install as installs,
+likes as likes,
+clicks as link_clicks,
+0 as placement_id,
+0 as post_click_conversions,
+0 as post_view_conversions,
+0 as posts,
+purchase as purchase,
+complete_registration as registrations,
+0 as revenue,
+shares as shares,
+spend as spend,
+0 as total_conversions,
+views as video_views from {{ ref('src_ads_creative_facebook_all_data')}}
+
+union all
+
+select
+ad_id as ad_id,
+0 as add_to_cart,
+adset_id as adset_id,
+campaign_id as campaign_id,
+channel as channel,
+clicks as clicks,
+0 as comments,
+0 as creative_id,
+__insert_date as date,
+0 as engagements,
+imps as impressions,
+0 as installs,
+0 as likes,
+clicks as link_clicks,
+0 as placement_id,
+0 as post_click_conversions,
+0 as post_view_conversions,
+0 as posts,
+0 as purchase,
+0 as registrations,
+revenue as revenue,
+0 as shares,
+spend as spend,
+conv as total_conversions,
+0 as video_views from {{ ref('src_ads_bing_all_data')}}
+
